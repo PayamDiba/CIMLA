@@ -1,7 +1,7 @@
 import tensorflow as tf
 #tf.compat.v1.disable_v2_behavior()#This is for compatibility of shap and tf, might be able to remove in future
-from ML.BaseModels import baseML
-from ML.archs.MLP import build_MLP
+from CIMLA.ML.BaseModels import baseML
+from CIMLA.ML.archs.MLP import build_MLP
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV

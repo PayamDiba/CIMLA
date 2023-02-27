@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
-from attribution.metrics import RMSD
+from CIMLA.attribution.metrics import RMSD
 import joblib
-from utils import mkdir, runningMean
+from CIMLA.utils import mkdir, runningMean
 from sklearn.metrics import r2_score, accuracy_score, mean_squared_error
 import shutil
 

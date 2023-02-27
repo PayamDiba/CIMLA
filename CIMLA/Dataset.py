@@ -9,7 +9,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3"  #only display errors
 import tensorflow as tf
 import h5py
-from utils import mkdir, generate_from_hdf5
+from CIMLA.utils import mkdir, generate_from_hdf5
 #tf.compat.v1.disable_v2_behavior()#This is for compatibility of shap and tf, might be able to remove in future
 
 class data(object):

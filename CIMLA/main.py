@@ -1,5 +1,5 @@
 import argparse
-from ConfigParser import parser
+from CIMLA.ConfigParser import parser
 """
 TODOs:
 1. Move post processor to CIMLA_pipeline --> helps making it available as a module

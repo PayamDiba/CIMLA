@@ -1,4 +1,4 @@
-from attribution.BaseModels import baseAM
+from CIMLA.attribution.BaseModels import baseAM
 import shap
 import numpy as np
 

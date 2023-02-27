@@ -1,14 +1,14 @@
 import yaml
-import defaults
+import CIMLA.defaults as defaults
 import pandas as pd
 import numpy as np
 import dask.dataframe as dd
-from Dataset import data
-from ML.Regression import xgboost
+from CIMLA.Dataset import data
+from CIMLA.ML.Regression import xgboost
 #from ML.Classification import RF_clf
-from attribution.SHAP import treeSHAP, deepSHAP
-from CIMLA import cimla
-from PostProcessor import processor
+from CIMLA.attribution.SHAP import treeSHAP, deepSHAP
+from CIMLA.CIMLA import cimla
+from CIMLA.PostProcessor import processor
 
 """
 TODOs:
@@ -150,9 +150,9 @@ class parser(object):
 
         elif ML_config['type'] == 'MLP':
             if ML_config['task'] == 'regression':
-                from ML.Regression import deepMLP
+                from CIMLA.ML.Regression import deepMLP
             else:
-                from ML.Classification import deepMLP
+                from CIMLA.ML.Classification import deepMLP
 
             model1 = deepMLP(input_shape = n_features, mid_channels = ML_config['hidden_channels'], l2 = ML_config['dense_layers_l2'], dropout = ML_config['dropout'], class_weight = class_weights[0])
             model2 = deepMLP(input_shape = n_features, mid_channels = ML_config['hidden_channels'], l2 = ML_config['dense_layers_l2'],dropout = ML_config['dropout'], class_weight = class_weights[1])

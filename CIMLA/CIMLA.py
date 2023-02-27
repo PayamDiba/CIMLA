@@ -1,7 +1,7 @@
 import numpy as np
-from attribution.SHAP import deepSHAP, treeSHAP
-from attribution.metrics import RMSD, MSD
-from utils import runningMean
+from CIMLA.attribution.SHAP import deepSHAP, treeSHAP
+from CIMLA.attribution.metrics import RMSD, MSD
+from CIMLA.utils import runningMean
 class cimla (object):
     def __init__(self,
                  data_g1,
