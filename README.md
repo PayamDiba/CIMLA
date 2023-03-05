@@ -19,11 +19,77 @@ CIMLA can be used in the enviornment created above. A YAML config file (see belo
 ```cimla --config config_test.yaml```
 
 ## CIMLA Config File
-The config file consists of four sections described below
+The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. Please refer to the guide below for more details.
 
-### data:
+```yaml
+data:
+ path_g1: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s1/expression_s1.csv
+ path_g2: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s2/expression_s2.csv
+ number_samples_g1: 3000
+ number_samples_g2: 3000
+ independent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/indep_pars_0.csv
+ dependent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/dep_par_0.csv
+ normalize: True
+ test_size: 0.2
+ split_random_state: 32
+ #cache: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
+ cache:
+ sample_column:
 
-* path_g1:
+
+ML:
+ #Types: RF, MLP, XGB
+ #Tasks: regression, (classification is not fully supported yet)
+ type: MLP
+ task: regression
+
+ ## tree (RF and XGBoost) specific parameters
+ ## Use "rmse" for XGB regression and "neg_mean_squared_error" for RF regression
+ max_depth: [10, 30]
+ scoring: rmse
+ #scoring: neg_mean_squared_error
+
+ ## RF specific parameters
+ n_estimators: [50, 200]
+ max_features: ['sqrt']
+ min_samples_leaf: [1, 5]
+ max_leaf_nodes: [50, 200]
+ cv: 3
+
+ ## XGBoost specific parameters
+ min_child_weight: [5]
+ subsample: [1]
+ colsample: [1]
+ eta: [0.1, 0.01]
+ l2: [1, 5, 10]
+ l1: [0.01, 0.1, 1]
+ max_boost_round: 400
+ early_stop_round: 30
+ early_stop_tol: 0.01
+
+ ## MLP specific parameters
+ hidden_channels: [128,32]
+ dropout: 0.5
+ dense_layers_l2: 0.01
+
+
+attribution:
+ #Types: tree_shap, deep_shap
+ type: deep_shap
+ data_split: train
+ data_group: 1
+ data_size: 0.75
+ global_type: rmsd
+
+
+post_process:
+ local_scores_path:
+ global_scores_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
+ ML_save_path:
+ ML_performance_save_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
+ ML_performance_metric: mse
+
+```
 
 
 
