@@ -14,6 +14,10 @@ Activate this environment and install CIMLA:
 ```pip install CIMLA```
 
 ## Run CIMLA
-CIMLA can be used in the enviornment created. above as following:
+CIMLA can be used in the enviornment created above. A YAML config file (see below) is required to run CIMLA:
+
+```cimla --config config_test.yaml```
+
+
 
 
