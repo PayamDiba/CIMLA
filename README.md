@@ -21,7 +21,7 @@ CIMLA can be used in the enviornment created above. A YAML config file (see belo
 ## CIMLA Config File
 The config file consists of four sections described below
 
-# data:
+### data:
 
 
 
