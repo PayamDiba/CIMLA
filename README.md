@@ -28,6 +28,11 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **path_g2:** *{string, required}* 
 > Directory of the observational data for group 2. Data must be stored with rows as samples and columns as variables, also header (column names) and row names are required. 
 
+**number_samples_g1:** *{integer, required}* 
+> Number of samples (rows) in the observational data of group 1.
+
+**number_samples_g2:** *{integer, required}* 
+> Number of samples (rows) in the observational data of group 2.
 ```yaml
 data:
  path_g1: *{string, required}* 
