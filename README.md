@@ -40,7 +40,8 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **dependent_parameters:** *{string, required}* 
 > Directory of a text file containing the name (>1 dependent parametera is not yet supported) of independent variable. Data must be stored in one column and one row (one entery, without any header or row name) containing the name of dependent variable.
 
-**normalize:** *{bool, required}*
+**normalize:** *{bool, Default=False}*
+> `True` is recommended. If 'True', all variables (dependent and independent) are nornalized to have unit variance and zero mean (i.e. Standardization). Normalization typically improves performance.  
 
 
 
