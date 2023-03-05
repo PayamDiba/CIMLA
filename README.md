@@ -61,7 +61,9 @@ The config file specifies user defined settings in four sections: data, ML, attr
 
 **task:** *{(regression), required}*
 > The ML task (i.e. loss) to train in each group. `classification` is not yet supported.
-
+     
+     
+     
 
 #### Tree (RF and XGBoost) specific parameters
 **max_depth:** *{list(integer), required}*
