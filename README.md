@@ -38,10 +38,9 @@ The config file specifies user defined settings in four sections: data, ML, attr
 > Directory of a text file containing the names of independent variables. Data must be stored in one column (without any header or row name) with rows as independent variables' names.
 
 **dependent_parameters:** *{string, required}* 
-> Directory of a text file containing the name (>1 dependent parameter is not yet supported) of independent variable. Data must be stored in one column and one row (one entery, without any header or row name) containing the name of dependent variable.
+> Directory of a text file containing the name (>1 dependent parametera is not yet supported) of independent variable. Data must be stored in one column and one row (one entery, without any header or row name) containing the name of dependent variable.
 
-
-
+**normalize:** *{bool, required}*
 
 
 
