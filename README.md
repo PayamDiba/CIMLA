@@ -19,11 +19,11 @@ CIMLA can be used in the enviornment created above. A YAML config file (see belo
 ```cimla --config config_test.yaml```
 
 ## CIMLA Config File
-The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. Please refer to the guide below for more details.
+The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. Please refer to the manual below for more details.
 
 ```yaml
 data:
- path_g1: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s1/expression_s1.csv
+ path_g1: *{string, required}* Directory of the observational data for group 1. Data should be stored with rows as samples and columns as variables, also header (column names) and row names are required. 
  path_g2: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s2/expression_s2.csv
  number_samples_g1: 3000
  number_samples_g2: 3000
