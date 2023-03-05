@@ -23,6 +23,7 @@ The config file consists of four sections described below
 
 ### data:
 
+* path_g1:
 
 
 
