@@ -64,25 +64,37 @@ The config file specifies user defined settings in four sections: data, ML, attr
 
 <br>
 
-#### Tree (RF and XGBoost) specific parameters
+#### Tree (RF and XGBoost) Specific Parameters:
 **max_depth:** *{list(integer), required}*
-> A list of integer(s) containing max depth of decision trees to be evaluated in cross-validation during training. 
+> The maximum depth of the decision trees. A list of integer(s) containing numbers to be evaluated in cross-validation during training. 
 
 **scoring:** *{(rmse , neg_mean_squared_error), required}*
 > scoring function to be used during cross-validation for hyper-parameter tuning. Use `rmse` for XGB regression and `neg_mean_squared_error` for RF regression.
 
+<br>
 
+#### RF Specific Parameters:
+**n_estimators:** *{list(integer), required}*
+> The number of decision trees in the forest. A list of integer(s) containing numbers to be evaluated in cross-validation during training. 
 
+**max_features:** *{list(int , float , "sqrt" , "log2"), required}*
+> The number of features to consider when looking for the best split. TODO
 
+**min_samples_leaf:** *{list(integer), required}*
+> The minimum number of samples required to be at a leaf node. A list of integer(s) containing numbers to be evaluated in cross-validation during training.
 
+**max_leaf_nodes:** *{list(integer), required}*
+> The maximum number of leaf nodes a tree can attain during training (controls tree size). A list of integer(s) containing numbers to be evaluated in cross-validation during training.
 
-**type:** *{(RF or MLP or XGB), required}*
-> Type of the ML model to be trained in each group.
+**cv:** *{integer, required}*
+> Number of folds to be used for cross-validation during training. 
 
-**type:** *{(RF or MLP or XGB), required}*
-> Type of the ML model to be trained in each group.
+<br>
 
-task: regression
+#### XGBoost Specific Parameters
+
+**min_child_weight:** *{list(integer), required}*
+> The maximum number of leaf nodes a tree can attain during training (controls tree size). A list of integer(s) containing numbers to be evaluated in cross-validation during training.
 
 
 
