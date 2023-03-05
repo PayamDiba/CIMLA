@@ -56,7 +56,7 @@ The config file specifies user defined settings in four sections: data, ML, attr
 > Name of the column containing row names in the observational data of both groups. Leave it empty if this column is not labled in data.
 
 ### ML:
-**type:** *(RF , MLP , XGB), required*
+**type:** *{RF , MLP , XGB}, required*
 > Type of the ML model to be trained in each group. Tree-based models (RF,XGB) are trained by cross-validation on train split to select the best hyper-patameters among the various user-defined settings. 
 
 **task:** *(regression), required*
@@ -68,7 +68,7 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **max_depth:** *list(integer), required*
 > The maximum depth of the decision trees. A list of integer(s) containing numbers to be evaluated in cross-validation during training. 
 
-**scoring:** *(rmse , neg_mean_squared_error), required*
+**scoring:** *{rmse , neg_mean_squared_error}, required*
 > scoring function to be used during cross-validation for hyper-parameter tuning. Use `rmse` for XGB regression and `neg_mean_squared_error` for RF regression.
 
 <br>
@@ -94,47 +94,55 @@ The config file specifies user defined settings in four sections: data, ML, attr
 #### XGBoost Specific Parameters
 
 **min_child_weight:** *list(integer), required*
-> The maximum number of leaf nodes a tree can attain during training (controls tree size). A list of integer(s) containing numbers to be evaluated in cross-validation during training.
+> Minimum sum of instance weight (hessian) needed in a child. See XGBoost documentation for more details. A list of integer(s) containing numbers to be evaluated in cross-validation during training.
+
+**subsample:** *list(float), required*
+> Subsample ratio of the training instances. Setting it to 0.5 means that XGBoost would randomly sample half of the training data prior to growing trees. See XGBoost documentation for more details. A list of float(s) containing numbers to be evaluated in cross-validation during training.
+
+**colsample:** *list(float), required*
+> Controls `colsample_bynode` parameter of XGBoost. Subsample ratio of columns for each node (split). See XGBoost documentation for more details. A list of float(s) containing numbers to be evaluated in cross-validation during training.
+
+**eta:** *list(float), required*
+> Step size shrinkage used in update to prevents overfitting. See XGBoost documentation for more details. A list of float(s) containing numbers to be evaluated in cross-validation during training.
+
+**l2:** *list(float), required*
+> Controls `lambda` parameter of XGBoost. L2 regularization term on weights. See XGBoost documentation for more details. A list of float(s) containing numbers to be evaluated in cross-validation during training.
+
+**l1:** *list(float), required*
+> Controls `alpha` parameter of XGBoost. L1 regularization term on weights. See XGBoost documentation for more details. A list of float(s) containing numbers to be evaluated in cross-validation during training.
+
+**max_boost_round:** *integer, required*
+> Controls `num_boost_round` parameter of XGBoost. Maximum number of boosting iterations. See XGBoost documentation for more details.
+
+**early_stop_round:** *integer, required*
+> Cross-Validation metric (average of validation metric computed over CV folds) needs to improve at least once in every `early_stop_rounds` round(s) to continue training. See XGBoost documentation for more details.
+
+**early_stop_tol:** *float, required*
+> Minimum absolute change in score to be qualified as an improvement. See XGBoost documentation for more details.TODO
+
+<br>
+
+#### MLP Specific Parameters
+
+**hidden_channels:** *list(integer), required*
+> A list of size *h* that determines the size of *h* hidden layers. The left most element corresponds to the layer right after the input, and the right most element correponds to the the layer before the output.
+
+**dropout:** *float, optional*
+> If specified, a dropout layer with `prob=dropout` is used after the input layer. (0<dropout<=1)
+
+**dense_layers_l2:** *float, optional*
+> If specified, l2 regularization term with the specified weight is applied to weights of each of the hidden layers.
+
+
+### attribution:
+
+
+
 
 
 
 
 ```yaml
-ML:
- #Types: RF, MLP, XGB
- #Tasks: regression, (classification is not fully supported yet)
- type: MLP
- task: regression
-
- ## tree (RF and XGBoost) specific parameters
- ## Use "rmse" for XGB regression and "neg_mean_squared_error" for RF regression
- max_depth: [10, 30]
- scoring: rmse
- #scoring: neg_mean_squared_error
-
- ## RF specific parameters
- n_estimators: [50, 200]
- max_features: ['sqrt']
- min_samples_leaf: [1, 5]
- max_leaf_nodes: [50, 200]
- cv: 3
-
- ## XGBoost specific parameters
- min_child_weight: [5]
- subsample: [1]
- colsample: [1]
- eta: [0.1, 0.01]
- l2: [1, 5, 10]
- l1: [0.01, 0.1, 1]
- max_boost_round: 400
- early_stop_round: 30
- early_stop_tol: 0.01
-
- ## MLP specific parameters
- hidden_channels: [128,32]
- dropout: 0.5
- dense_layers_l2: 0.01
-
 
 attribution:
  #Types: tree_shap, deep_shap
