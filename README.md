@@ -41,29 +41,51 @@ The config file specifies user defined settings in four sections: data, ML, attr
 > Directory of a text file containing the name (>1 dependent parametera is not yet supported) of independent variable. Data must be stored in one column and one row (one entery, without any header or row name) containing the name of dependent variable.
 
 **normalize:** *{bool, Default=False}*
-> `True` is recommended. If 'True', all variables (dependent and independent) are nornalized to have unit variance and zero mean (i.e. Standardization). Normalization typically improves performance.  
+> `True` is recommended. If `True`, all variables (dependent and independent) are nornalized to have unit variance and zero mean (i.e. Standardization). Normalization typically improves performance.
 
+**test_size:** *{float, required}*
+> Fraction of data (0<=test_size<=1) in each group to be randomly selected and excluded from training. Useful for testing ML models on holdout data.
+
+**split_random_state:** *{integer, optional}*
+> Seed number for random selection of test data.
+
+**cache:** *{string, optional}*
+> Directory for cache. If specified, data will be read from disk and model training is performed in batches. This can adversely impact model training overall CIMLA performance. Useful when data is too large to fit in memory. 
+
+**sample_column:** *{string, optional}*
+> Name of the column containing row names in the observational data of both groups. Leave it empty if this column is not labled in data.
+
+### ML:
+**type:** *{(RF , MLP , XGB), required}*
+> Type of the ML model to be trained in each group. Tree-based models (RF,XGB) are trained by cross-validation on train split to select the best hyper-patameters among the various user-defined settings. 
+
+**task:** *{(regression), required}*
+> The ML task (i.e. loss) to train in each group. `classification` is not yet supported.
+
+#### Tree (RF and XGBoost) specific parameters
+**max_depth:** *{list(integer), required}*
+> a list of integer(s) containing max depth of decision trees to be evaluated in cross-validation during training. 
+
+**scoring:** *{(rmse , neg_mean_squared_error), required}*
+> scoring function to be used during cross-validation for hyper-parameter tuning. Use `rmse` for XGB regression and `neg_mean_squared_error` for RF regression.
+
+
+
+
+
+
+**type:** *{(RF or MLP or XGB), required}*
+> Type of the ML model to be trained in each group.
+
+**type:** *{(RF or MLP or XGB), required}*
+> Type of the ML model to be trained in each group.
+
+task: regression
 
 
 
 
 ```yaml
-data:
- path_g1: *{string, required}* 
- Directory of the observational data for group 1. Data should be stored with rows as samples and columns as variables, also header (column names) and row names are required. 
- path_g2: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s2/expression_s2.csv
- number_samples_g1: 3000
- number_samples_g2: 3000
- independent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/indep_pars_0.csv
- dependent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/dep_par_0.csv
- normalize: True
- test_size: 0.2
- split_random_state: 32
- #cache: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
- cache:
- sample_column:
-
-
 ML:
  #Types: RF, MLP, XGB
  #Tasks: regression, (classification is not fully supported yet)
