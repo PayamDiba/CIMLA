@@ -62,9 +62,10 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **task:** *{(regression), required}*
 > The ML task (i.e. loss) to train in each group. `classification` is not yet supported.
 
+
 #### Tree (RF and XGBoost) specific parameters
 **max_depth:** *{list(integer), required}*
-> a list of integer(s) containing max depth of decision trees to be evaluated in cross-validation during training. 
+> A list of integer(s) containing max depth of decision trees to be evaluated in cross-validation during training. 
 
 **scoring:** *{(rmse , neg_mean_squared_error), required}*
 > scoring function to be used during cross-validation for hyper-parameter tuning. Use `rmse` for XGB regression and `neg_mean_squared_error` for RF regression.
