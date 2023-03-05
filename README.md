@@ -22,7 +22,7 @@ CIMLA can be used in the enviornment created above. A YAML config file (see belo
 The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. Please refer to the manual below for more details.
 
 ### data:
-* path_g1: *{string, required}* Directory of the observational data for group 1. Data should be stored with rows as samples and columns as variables, also header (column names) and row names are required. 
+**path_g1:** *{string, required}* Directory of the observational data for group 1. Data should be stored with rows as samples and columns as variables, also header (column names) and row names are required. 
 
 ```yaml
 data:
