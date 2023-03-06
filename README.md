@@ -135,6 +135,12 @@ The config file specifies user defined settings in four sections: data, ML, attr
 
 
 ### attribution:
+**type:** *{tree_shap , deep_shap}, required*
+> Type of the attribution model to be used (must match with the type of the ML model). Currently, support tree_shap for tree-based ML models (RF and XGBoost) and deep-shap for MLP.
+
+**data_split:** *{train , test}, required*
+> Split of data to be used for interpretation of the trained models.
+
 
 
 
