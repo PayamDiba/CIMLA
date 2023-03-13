@@ -141,6 +141,12 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **data_split:** *{train , test}, required*
 > Split of data to be used for interpretation of the trained models.
 
+**data_group:** *{1 , 2}, required*
+> The group of data to be used for interpretation of the trained models.
+
+**data_size:** *float, required*
+> Fraction of data (0<data_size<=1) to be used for interpretation of the trained models. The specified fraction is sampled from split = `data_split` of group = `data_group`.
+
 
 
 
