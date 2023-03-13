@@ -133,6 +133,7 @@ The config file specifies user defined settings in four sections: data, ML, attr
 **dense_layers_l2:** *float, optional*
 > If specified, l2 regularization term with the specified weight is applied to weights of each of the hidden layers.
 
+<br>
 
 ### attribution:
 **type:** *{tree_shap , deep_shap}, required*
@@ -145,35 +146,24 @@ The config file specifies user defined settings in four sections: data, ML, attr
 > The group of data to be used for interpretation of the trained models.
 
 **data_size:** *float, required*
-> Fraction of data (0<data_size<=1) to be used for interpretation of the trained models. The specified fraction is sampled from split = `data_split` of group = `data_group`.
+> Fraction of data (0<data_size<=1) to be used for interpretation of the trained models. The specified fraction is randomly sampled from split = `data_split` of group = `data_group`.
 
+**global_type:** *{rmsd}, required*
+> Function used for aggregating local scores into global scores. For now only support `rmsd` (Root-Mean-Square-Difference).
 
+<br>
 
+### post_process:
+**local_scores_path:** *string, optional*
+> If specified, local attribution scores for both models are saved in specified directiory.
 
+**global_scores_path:** *string, optional*
+> If specified, global CIMLA scores for both models are saved in specified directiory.
 
+**ML_performance_save_path:** *string, optional*
+> If specified, performance of both ML models on both train and test splits are saved in specified directiory.
 
-
-```yaml
-
-attribution:
- #Types: tree_shap, deep_shap
- type: deep_shap
- data_split: train
- data_group: 1
- data_size: 0.75
- global_type: rmsd
-
-
-post_process:
- local_scores_path:
- global_scores_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
- ML_save_path:
- ML_performance_save_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
- ML_performance_metric: mse
-
-```
-
-
-
+**ML_performance_metric** *{r2 , accuracy , mse}, optional*
+> Required if `ML_performance_save_path` is specified.
 
 
