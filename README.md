@@ -37,18 +37,16 @@ data:
  cache:
  sample_column:
 
-
 ML:
- #Types: RF, MLP, XGB
- #Tasks: regression, (classification is not fully supported yet)
- type: MLP
+ #Allowed ML types: RF, MLP, XGB
+ #Allowed ML tasks: regression, (classification is not yet fully supported)
+ type: RF
  task: regression
 
- ## tree (RF and XGBoost) specific parameters
- ## Use "rmse" for XGB regression and "neg_mean_squared_error" for RF regression
+ ## Tree (RF and XGBoost) specific parameters
+ # Allowed scorings: Use "neg_mean_squared_error" for RF regression and "rmse" for XGB regression
  max_depth: [10, 30]
- scoring: rmse
- #scoring: neg_mean_squared_error
+ scoring: neg_mean_squared_error
 
  ## RF specific parameters
  n_estimators: [50, 200]
@@ -75,8 +73,8 @@ ML:
 
 
 attribution:
- #Types: tree_shap, deep_shap
- type: deep_shap
+ #Allowed attribution types: tree_shap (for RF and XGB), deep_shap (for MLP)
+ type: tree_shap
  data_split: train
  data_group: 1
  data_size: 0.75
@@ -84,6 +82,7 @@ attribution:
 
 
 post_process:
+ #Allowed post_processing metrics: r2, mse (for regression), accuracy (for classification)
  local_scores_path:
  global_scores_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
  ML_save_path:
