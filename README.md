@@ -19,9 +19,7 @@ CIMLA can be used in the enviornment created above. A YAML config file (see belo
 ```cimla --config config_test.yaml```
 
 ## CIMLA Config File
-The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. Please refer to the manual below for more details.
-
-A working example of config file is shown below:
+The config file specifies user defined settings in four sections: data, ML, attribution, and post_process. A working example of config file is shown below:
 
 ```yaml
 data:
@@ -89,6 +87,8 @@ post_process:
  ML_performance_save_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
  ML_performance_metric: mse
 ```
+
+Please see below for detailed explainations of config file parameters.
 
 ### data:
 **path_g1:** *string, required* 
