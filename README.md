@@ -147,7 +147,7 @@ Please see below for detailed explainations of config file parameters.
 > The number of decision trees in the forest. A list of integer(s) containing numbers to be evaluated in cross-validation during training. 
 
 **max_features:** *list(int , float , "sqrt" , "log2"), required*
-> The number of features to consider when looking for the best split. TODO
+> The number of features to consider when looking for the best split.
 
 **min_samples_leaf:** *list(integer), required*
 > The minimum number of samples required to be at a leaf node. A list of integer(s) containing numbers to be evaluated in cross-validation during training.
