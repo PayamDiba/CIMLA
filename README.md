@@ -23,12 +23,12 @@ The config file specifies user defined settings in four sections: data, ML, attr
 
 ```yaml
 data:
- path_g1: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s1/expression_s1.csv
- path_g2: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/s2/expression_s2.csv
+ path_g1: {PATH-TO-DATA-GROUP1}
+ path_g2: {PATH-TO-DATA-GROUP2}
  number_samples_g1: 3000
  number_samples_g2: 3000
- independent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/indep_pars_0.csv
- dependent_parameters: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/pr_0.1_rID_1/pars/dep_par_0.csv
+ independent_parameters: {PATH-TO-INDEP-PAR-NAMES}
+ dependent_parameters: {PATH-TO-DEP-PAR-NAMES}
  normalize: True
  test_size: 0.2
  split_random_state: 32
@@ -82,9 +82,9 @@ attribution:
 post_process:
  #Allowed post_processing metrics: r2, mse (for regression), accuracy (for classification)
  local_scores_path:
- global_scores_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
+ global_scores_path: {PATH-TO-WRITE}
  ML_save_path:
- ML_performance_save_path: /home/payam/research/causal_inference_proj3/package_tests/src/github/test/out
+ ML_performance_save_path: {PATH-TO-WRITE}
  ML_performance_metric: mse
 ```
 
