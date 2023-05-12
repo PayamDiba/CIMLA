@@ -119,7 +119,7 @@ Please see below for detailed explainations of config file parameters.
 > Seed number for random selection of test data.
 
 **cache:** *string, optional*
-> Directory for cache. If specified, data will be read from disk and model training is performed in batches. This can adversely impact model training overall CIMLA performance. Useful when data is too large to fit in memory. 
+> Directory for cache. If specified, data will be read from disk and model training is performed in batches. This can adversely impact model training and overall CIMLA performance. Useful when data is too large to fit in memory. 
 
 **sample_column:** *string, optional*
 > Name of the column containing row names in the observational data of both groups. Leave it empty if this column is not labled in data.
