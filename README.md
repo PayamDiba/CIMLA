@@ -1,5 +1,5 @@
 ## CIMLA (Counterfactual Inference by Machine Learning and Attribution Models)
-Saurabh Sinha’s Lab, University of Illinois at Urbana-Champaign [Sinha Lab](https://www.sinhalab.net/sinha-s-home)
+Saurabh Sinha’s Lab, University of Illinois at Urbana-Champaign [Sinha Lab](https://sites.google.com/view/sinhalaboratorygatech)
 
 ## Description
 CIMLA is a counterfactual inference method for identifying differential causal associations between two groups from observational data.
